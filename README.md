@@ -1,4 +1,4 @@
-HighscoreAPI-csharp
+HighScoreAPI-csharp
 ===================
 
-C# lib for the HighscoreAPI
+C# lib for the HighScoreAPI
