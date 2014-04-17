@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using HighscoreAPI.Models;
 using Newtonsoft.Json;
 
 namespace HighscoreAPI
 {
-    public class HighscoreAPI : IApiRequest
+    public class Client : IApiRequest
     {
         public string Key { get; private set; }
         public string Secret { get; private set; }
@@ -23,7 +19,7 @@ namespace HighscoreAPI
         /// <param name="secret"></param>
         /// <param name="url"></param>
         /// <param name="gameVersion"></param>
-        public HighscoreAPI(string key, string secret, string url, string gameVersion)
+        public Client(string key, string secret, string url, string gameVersion)
         {
             GameVersion = gameVersion;
             URL = url;
@@ -58,7 +54,7 @@ namespace HighscoreAPI
         /// </summary>
         /// <param name="score"></param>
         /// <param name="callback"></param>
-        public void PostScore(Score score, Action<Response<List<Score>>> callback)
+        public void PostScore(Score score, Action<Response<bool>> callback)
         {
             var communicator = new Communicator(this);
             var data = new Dictionary<string, object> { { "username", score.Name }, { "score", score.ScorePoints }, { "version", GameVersion } };
